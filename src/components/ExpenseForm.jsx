@@ -23,7 +23,7 @@ function ExpenseForm ({ onAddExpense }) {
 
     const newExpense = {
       ...formData,
-      id: Date.now(),  // Simple ID generator
+      id: Date.now(),  
       amount: parseFloat(formData.amount)
     };
 
@@ -33,38 +33,51 @@ function ExpenseForm ({ onAddExpense }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input 
-        type="date"
-        name="date"
-        value={formData.date}
-        onChange={handleChange}
-        required
-      />
-      <input 
-        type="text"
-        name="description"
-        placeholder="Description"
-        value={formData.description}
-        onChange={handleChange}
-        required
-      />
-      <input 
-        type="text"
-        name="category"
-        placeholder="Category"
-        value={formData.category}
-        onChange={handleChange}
-        required
-      />
-      <input 
-        type="number"
-        name="amount"
-        placeholder="Amount"
-        value={formData.amount}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Add Expense</button>
+      <div className="mb-3">
+        <label className="form-label">Date</label>
+        <input
+          type="date"
+          name="date"
+          className="form-control"
+          value={formData.date}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="mb-3">
+        <label className="form-label">Description</label>
+        <input
+          type="text"
+          name="description"
+          className="form-control"
+          value={formData.description}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="mb-3">
+        <label className="form-label">Category</label>
+        <input
+          type="text"
+          name="category"
+          className="form-control"
+          value={formData.category}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="mb-3">
+        <label className="form-label">Amount</label>
+        <input
+          type="number"
+          name="amount"
+          className="form-control"
+          value={formData.amount}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <button type="submit" className="btn btn-dark w-100">Submit</button>
     </form>
   );
 }

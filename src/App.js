@@ -26,14 +26,31 @@ function App() {
   );
 
   return (
-    <div className="App">
-      <h1>Expense Tracker</h1>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <ExpenseForm onAddExpense={handleAddExpense} />
-      <ExpenseTable expenses={filteredExpenses} handleDelete={handleDelete} />
+    
+    <div className="container my-4">
+      <h1 className="text-center mb-4">Expense Tracker</h1>
+      <div className="row">
+        <div className="col-md-4">
+          <div className="card shadow-sm">
+            <div className="card-body">
+              <h5 className="card-title">Add Expense</h5>
+              <ExpenseForm onAddExpense={handleAddExpense} />
+            </div>
+          </div>
+        </div>
+
+    <div className="col-md-8">
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <ExpenseTable expenses={filteredExpenses} handleDelete={handleDelete} />
+        </div>
+      </div>
     </div>
   );
-  
+
+
+
+
+
 }
 
 export default App;

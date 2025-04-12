@@ -2,13 +2,12 @@
 import React from 'react';
 
 
-
-
 function ExpenseTable  ({ expenses, handleDelete }) {
 
     return (
-    <table>
-      <thead>
+        <div className="table-responsive">
+    <table className="table table-hover table-bordered">
+      <thead className="table-dark">
         <tr>
           <th>Date</th>
           <th>Description</th>
@@ -26,17 +25,19 @@ function ExpenseTable  ({ expenses, handleDelete }) {
               <td>{expense.category}</td>
               <td>Ksh {expense.amount}</td>
               <td>
-                <button onClick={() => handleDelete(expense.id)}>Delete</button>
+                <button className="btn btn-sm btn-danger"
+                onClick={() => handleDelete(expense.id)}>Delete</button>
               </td>
             </tr>
           ))
         ) : (
           <tr>
-            <td colSpan="5">No expenses found.</td>
+            <td colSpan="5" className="text-center">No expenses found.</td>
           </tr>
         )}
       </tbody>
     </table>
+    </div>
   );
 
 
