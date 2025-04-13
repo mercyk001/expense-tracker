@@ -15,3 +15,7 @@ What's needed:
 
 Sorting expenses (alphabetically by description or category).
 Deleting expenses.
+
+
+# Deployment
+This project has been deployed using Vercel. This is the link to the live demo: https://expense-tracker-beta-blush.vercel.app/
