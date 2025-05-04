@@ -1,56 +1,60 @@
-//import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
-import ExpenseTable from './components/ExpenseTable';
-import ExpenseForm from './components/ExpenseForm';
-import SearchBar from './components/SearchBar';
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import TrackIt from './pages/TrackIt';
+import ContactUs from './pages/ContactUs';
 
 function App() {
- 
-  const [expenses, setExpenses] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleAddExpense = (expense) => {
-    setExpenses([...expenses, expense]);
-  };
-
-  const handleDelete = (id) => {
-    setExpenses(expenses.filter(expense => expense.id !== id));
-  };
-
-  const filteredExpenses = expenses.filter(
-    exp =>
-      exp.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      exp.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
-    
-    <div className="container my-4">
-      <h1 className="text-center mb-4">Expense Tracker</h1>
-      <div className="row">
-        <div className="col-md-4">
-          <div className="card shadow-sm">
-            <div className="card-body">
-              <h5 className="card-title">Add Expense</h5>
-              <ExpenseForm onAddExpense={handleAddExpense} />
-            </div>
+    <Router>
+      {/* Bootstrap Navigation Bar */}
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container">
+          <Link className="navbar-brand" to="/">
+            Expense Tracker
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/track-it">
+                  Track It
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contact-us">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
+      </nav>
 
-    <div className="col-md-8">
-          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-          <ExpenseTable expenses={filteredExpenses} handleDelete={handleDelete} />
-        </div>
-      </div>
-    </div>
+      {/* Routing Setup */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/track-it" element={<TrackIt />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+      </Routes>
+    </Router>
   );
-
-
-
-
-
 }
 
 export default App;
