@@ -7,7 +7,7 @@ function ExpenseTable  ({ expenses, handleDelete }) {
     return (
         <div className="table-responsive">
     <table className="table table-hover table-bordered">
-      <thead className="table-dark">
+      <thead className="table-light">
         <tr>
           <th>Date</th>
           <th>Description</th>
